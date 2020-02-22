@@ -133,22 +133,26 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Audio\AmrDiab\Odam.mp3" />
-    <Content Include="Assets\Audio\AmrDiab\Youm.mp3" />
-    <Content Include="Assets\Audio\Angham\Hala.mp3" />
-    <Content Include="Assets\Audio\HamadaHelal\Eish.mp3" />
-    <Content Include="Assets\Audio\HamadaHelal\LaLa.mp3" />
-    <Content Include="Assets\Audio\Tamerhosni\ElMakan.mp3" />
-    <Content Include="Assets\Icons\AmrDiab.jfif" />
-    <Content Include="Assets\Icons\Angham.jfif" />
-    <Content Include="Assets\Icons\HamadaHelal.jfif" />
-    <Content Include="Assets\Icons\TamerHosni.jfif" />
-    <Content Include="Assets\Images\AmrDiab\Odam.png" />
-    <Content Include="Assets\Images\AmrDiab\Youm.png" />
-    <Content Include="Assets\Images\Angham\Hala.png" />
-    <Content Include="Assets\Images\HamadaHelal\Eish.png" />
-    <Content Include="Assets\Images\HamadaHelal\Lala.png" />
-    <Content Include="Assets\Images\TamerHosni\ElMakan.png" />
+    <Content Include="Assets\Audio\Adele\Hello.wav" />
+    <Content Include="Assets\Audio\Adele\Someone.wav" />
+    <Content Include="Assets\Audio\Justin\What.wav" />
+    <Content Include="Assets\Audio\Justin\Yummy.wav" />
+    <Content Include="Assets\Audio\Sia\Chandelier.wav" />
+    <Content Include="Assets\Audio\Sia\Cheap.wav" />
+    <Content Include="Assets\Audio\Taylor\Look.wav" />
+    <Content Include="Assets\Audio\Taylor\Shake.wav" />
+    <Content Include="Assets\Icons\adele.png" />
+    <Content Include="Assets\Icons\justin.png" />
+    <Content Include="Assets\Icons\sia.png" />
+    <Content Include="Assets\Icons\taylor.png" />
+    <Content Include="Assets\images\Adele\Hello.png" />
+    <Content Include="Assets\images\Adele\Someone.png" />
+    <Content Include="Assets\images\Justin\What.png" />
+    <Content Include="Assets\images\Justin\Yummy.png" />
+    <Content Include="Assets\images\Sia\Chandelier.png" />
+    <Content Include="Assets\images\Sia\Cheap.png" />
+    <Content Include="Assets\images\Taylor\Look.png" />
+    <Content Include="Assets\images\Taylor\Shake.png" />
     <Content Include="Assets\PackageAppXManifest\1240x1240.png" />
     <Content Include="Assets\PackageAppXManifest\1240x600.png" />
     <Content Include="Assets\PackageAppXManifest\24x24-large.png" />

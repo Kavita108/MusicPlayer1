@@ -15,13 +15,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace mediaplayer
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+   
     public sealed partial class MainPage : Page
     {
      
@@ -36,23 +33,23 @@ namespace mediaplayer
             //Load pane
             menuItems.Add(new MenuItem
             {
-                IconFile = "Assets/Icons/AmrDiab.jfif",
-                Category = SoundCategory.AmrDiab
+                IconFile = "Assets/Icons/adele.png",
+                Category = SoundCategory.Adele
             });
             menuItems.Add(new MenuItem
             {
-                IconFile = "Assets/Icons/Angham.jfif",
-                Category = SoundCategory.Angham
+                IconFile = "Assets/Icons/Justin.png",
+                Category = SoundCategory.Justin
             });
             menuItems.Add(new MenuItem
             {
-                IconFile = "Assets/Icons/HamadaHelal.jfif",
-                Category = SoundCategory.HamadaHelal
+                IconFile = "Assets/Icons/sia.png",
+                Category = SoundCategory.Sia
             });
             menuItems.Add(new MenuItem
             {
-                IconFile = "Assets/Icons/TamerHosni.jfif",
-                Category = SoundCategory.TamerHosni
+                IconFile = "Assets/Icons/taylor.png",
+                Category = SoundCategory.Taylor
             });
 
 

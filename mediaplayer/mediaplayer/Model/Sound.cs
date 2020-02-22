@@ -8,10 +8,9 @@ namespace mediaplayer.Model
 {
     public enum SoundCategory
     {
-        AmrDiab,
-        TamerHosni,
-        Angham,
-        HamadaHelal
+       Adele,
+       Justin,
+       Sia,Taylor
     }
     public class Sound
     {
@@ -25,7 +24,7 @@ namespace mediaplayer.Model
         {
             Name = name;
             Category = category;
-            AudioFile = $"Assets/Audio/{category}/{name}.mp3";
+            AudioFile = $"Assets/Audio/{category}/{name}.wav";
             ImageFile = $"Assets/Images/{category}/{name}.png";
 
         }

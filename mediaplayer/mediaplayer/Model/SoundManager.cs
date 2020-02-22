@@ -13,15 +13,18 @@ namespace mediaplayer.Model
         {
             var sounds = new List<Sound>();
 
-            sounds.Add(new Sound("Odam", SoundCategory.AmrDiab));
-            sounds.Add(new Sound("Youm", SoundCategory.AmrDiab ));
+            sounds.Add(new Sound("Hello", SoundCategory.Adele));
+            sounds.Add(new Sound("Someone", SoundCategory.Adele ));
 
-            sounds.Add(new Sound("Hala", SoundCategory.Angham));
+            sounds.Add(new Sound("What", SoundCategory.Justin));
+            sounds.Add(new Sound("yummy", SoundCategory.Justin));
 
-            sounds.Add(new Sound("Eish", SoundCategory.HamadaHelal));
-            sounds.Add(new Sound("Lala", SoundCategory.HamadaHelal));
 
-            sounds.Add(new Sound("ElMakan", SoundCategory.TamerHosni));
+            sounds.Add(new Sound("Chandelier", SoundCategory.Sia));
+            sounds.Add(new Sound("Cheap", SoundCategory.Sia));
+
+            sounds.Add(new Sound("Look", SoundCategory.Taylor));
+            sounds.Add(new Sound("Shake", SoundCategory.Taylor));
 
 
             return sounds;
