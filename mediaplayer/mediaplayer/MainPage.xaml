@@ -88,6 +88,7 @@
                             <DataTemplate x:DataType="data:Sound">
                                 <StackPanel>
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
+                                    <TextBlock x:Name="AudioFileName" FontSize="20" HorizontalAlignment="Center" Text="{x:Bind Name}" />
                                     <CheckBox x:Name="PlayListCheck" Visibility="Visible" IsChecked="{x:Bind playList,Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
