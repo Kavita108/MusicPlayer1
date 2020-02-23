@@ -51,8 +51,6 @@ namespace mediaplayer
                 IconFile = "Assets/Icons/taylor.png",
                 Category = SoundCategory.Taylor
             });
-
-
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +77,14 @@ namespace mediaplayer
             var menuItem = (MenuItem)e.ClickedItem;
             CategoryTextBlock.Text = menuItem.Category.ToString();
             SoundManager.GetSoundsByCategory(sounds, menuItem.Category);
+            BackButton.Visibility = Visibility.Visible;
+        }
+
+        private void PlayList_Click(object sender, RoutedEventArgs e)
+        {
+            SoundManager.GetSoundsByPlaylist(sounds);
+            CategoryTextBlock.Text = "Play List";
+            MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
         }
     }
