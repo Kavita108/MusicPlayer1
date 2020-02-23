@@ -33,7 +33,7 @@
                    CompactPaneLength="45"
                    OpenPaneLength="200">
             <SplitView.Pane>
-                <StackPanel Background="Gray">
+                <StackPanel Background="PowderBlue">
                     <ListView Name="MenuItemsListView" IsItemClickEnabled="True"
                           ItemsSource="{x:Bind menuItems}"
                           ItemClick="MenuItemsListView_ItemClick" >
