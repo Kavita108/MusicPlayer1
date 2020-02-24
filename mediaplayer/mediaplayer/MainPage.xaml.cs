@@ -53,6 +53,12 @@ namespace mediaplayer
             });
         }
 
+        //Start mark rating 
+        private void RatingChanged(RatingControl sender, object args)
+        {
+
+        }
+
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
@@ -87,5 +93,7 @@ namespace mediaplayer
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
         }
+
+
     }
 }

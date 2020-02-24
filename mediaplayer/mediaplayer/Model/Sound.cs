@@ -15,6 +15,8 @@ namespace mediaplayer.Model
     }
     public class Sound
     {
+      
+
         public string Name { get; set; }
         public SoundCategory Category { get; set; }
         public string AudioFile { get; set; }
@@ -27,6 +29,9 @@ namespace mediaplayer.Model
             Category = category;
             AudioFile = $"Assets/Audio/{category}/{name}.wav";
             ImageFile = $"Assets/Images/{category}/{name}.png";
+            
         }
+
+        
     }
 }
