@@ -86,9 +86,10 @@
                               ItemClick="SoundGridView_ItemClick">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Sound">
-                                <StackPanel>
+                                <StackPanel Margin="50">
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
                                     <TextBlock x:Name="AudioFileName" FontSize="20" HorizontalAlignment="Center" Text="{x:Bind Name}" />
+                                    <RatingControl x:Name="MyRating" ValueChanged="RatingChanged"/>  
                                     <CheckBox x:Name="PlayListCheck" Visibility="Visible" IsChecked="{x:Bind playList,Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
