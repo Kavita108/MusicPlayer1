@@ -57,7 +57,8 @@
                   </StackPanel>
                   <StackPanel Orientation="Horizontal">
                         <Button Content="&#xE728;" Name="FavoriteList" FontFamily="Segoe MDL2 Assets" Click="FavoriteList_Click"/>
-                        <TextBlock Text="Play List" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
+                        
+                        <TextBlock Text="My PlayList" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
                   </StackPanel>
                 </StackPanel>
             </SplitView.Pane>
@@ -67,7 +68,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <MediaElement Name="MyMediaElement" AutoPlay="False" />
+                    <MediaElement Name="MyMediaElement" AutoPlay="False"  />
                     <TextBlock Name="CategoryTextBlock" Text="My Music" FontSize="24" />
                     <GridView Grid.Row="1"
                               Name="SongGridView" 
@@ -86,7 +87,7 @@
                                         <AppBarButton Name="Pause" Icon="Pause" Visibility="Collapsed" Click="PauseButton_Click"/>
                                         <AppBarButton Name="Stop" Icon="Stop" Visibility="Collapsed" Click="StopButton_Click"/>
                                     </StackPanel>
-                                    <AppBarButton Name="AddPlaylist" Icon="Add" Click="AddPlaylist_Click"/>
+                                    <AppBarButton Name="AddPlaylist" Icon="Add" Click="AddPlaylist_Click" />
                                     <CheckBox x:Name="PlayListCheck" Visibility="Visible" IsChecked="{x:Bind PlayList,Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
