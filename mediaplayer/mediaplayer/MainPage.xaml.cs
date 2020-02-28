@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -53,12 +54,6 @@ namespace mediaplayer
             });
         }
 
-        //Start mark rating 
-        private void RatingChanged(RatingControl sender, object args)
-        {
-
-        }
-
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
@@ -86,6 +81,7 @@ namespace mediaplayer
             BackButton.Visibility = Visibility.Visible;
         }
 
+
         private void PlayList_Click(object sender, RoutedEventArgs e)
         {
             SoundManager.GetSoundsByPlaylist(sounds);
@@ -93,7 +89,5 @@ namespace mediaplayer
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
         }
-
-
     }
 }

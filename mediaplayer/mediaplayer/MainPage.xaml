@@ -89,7 +89,7 @@
                                 <StackPanel Margin="50">
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
                                     <TextBlock x:Name="AudioFileName" FontSize="20" HorizontalAlignment="Center" Text="{x:Bind Name}" />
-                                    <RatingControl x:Name="MyRating" ValueChanged="RatingChanged"/>  
+                                    <RatingControl x:Name="MyRating" InitialSetValue="0" Value="{x:Bind rating,Mode=TwoWay}"/>
                                     <CheckBox x:Name="PlayListCheck" Visibility="Visible" IsChecked="{x:Bind playList,Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
