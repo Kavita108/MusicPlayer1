@@ -46,7 +46,7 @@ namespace MusicLibrary.Model
         public static void GetSongsByPlaylist(ObservableCollection<Song> songs)
         {
             var allSongs = getSongs();
-            var filteredSongs = allSongs.Where(s => s.PlayList == true).ToList();
+            var filteredSongs = allSongs.Where(s => s.SelectedForPlaylist == true).ToList();
             songs.Clear();
             filteredSongs.ForEach(s => songs.Add(s));
         }

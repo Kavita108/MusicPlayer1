@@ -48,18 +48,23 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                  <StackPanel Orientation="Horizontal">
-                        <Button Content="&#xE735;"
-                                Name="PlayList"
-                                FontFamily="Segoe MDL2 Assets"
-                                Click="PlayList_Click"/>
-                        <TextBlock Text="Play List" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
-                  </StackPanel>
-                  <StackPanel Orientation="Horizontal">
-                        <Button Content="&#xE728;" Name="FavoriteList" FontFamily="Segoe MDL2 Assets" Click="FavoriteList_Click"/>
-                        
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="&#xE728;" Name="FavoriteList" FontFamily="Segoe MDL2 Assets">
+                            <Button.Flyout>
+                                <Flyout Placement="Right">
+                                    <ListView Name="PlayListView" IsItemClickEnabled="True" ItemClick="FavoriteList_Click" 
+                                          ItemsSource="{x:Bind playlists}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="data:Playlist" >
+                                                <TextBlock Text="{x:Bind Name}" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
                         <TextBlock Text="My PlayList" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
-                  </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
@@ -70,6 +75,20 @@
                     </Grid.RowDefinitions>
                     <MediaElement Name="MyMediaElement" AutoPlay="False"  />
                     <TextBlock Name="CategoryTextBlock" Text="My Music" FontSize="24" />
+                    <Button Content="Add To Playlist" HorizontalAlignment="Right">
+                        <Button.Flyout>
+                            <Flyout Placement="Right">
+                                <ListView Name="PlayListMenu" IsItemClickEnabled="True" ItemClick="AddToPlaylist_Click" 
+                                          ItemsSource="{x:Bind playlists}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate x:DataType="data:Playlist" >
+                                            <TextBlock Text="{x:Bind Name}" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
                     <GridView Grid.Row="1"
                               Name="SongGridView" 
                               SelectionMode="None" 
@@ -79,6 +98,8 @@
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Song">
                                 <StackPanel Margin="60">
+                                    <CheckBox x:Name="PlayListCheck" Visibility="Visible" HorizontalAlignment="Center"
+                                              IsChecked="{x:Bind SelectedForPlaylist,Mode=TwoWay}"/>
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
                                     <TextBlock x:Name="AudioFileName" FontSize="20" HorizontalAlignment="Center" Text="{x:Bind Name}" />
                                     <RatingControl x:Name="MyRating" ValueChanged="RatingChanged"/>
@@ -87,8 +108,6 @@
                                         <AppBarButton Name="Pause" Icon="Pause" Visibility="Collapsed" Click="PauseButton_Click"/>
                                         <AppBarButton Name="Stop" Icon="Stop" Visibility="Collapsed" Click="StopButton_Click"/>
                                     </StackPanel>
-                                    <AppBarButton Name="AddPlaylist" Icon="Add" Click="AddPlaylist_Click" />
-                                    <CheckBox x:Name="PlayListCheck" Visibility="Visible" IsChecked="{x:Bind PlayList,Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>

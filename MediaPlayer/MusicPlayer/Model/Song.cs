@@ -20,7 +20,7 @@ namespace MusicLibrary.Model
         public SongCategory Category { get; set; }
         public string AudioFile { get; set; }
         public string ImageFile { get; set; }
-        public bool PlayList { get; set; }
+        public bool SelectedForPlaylist { get; set; }
         public bool IsPlaying { get; set; }
 
         public bool IsPaused { get; set; }

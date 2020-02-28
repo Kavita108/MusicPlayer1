@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using MusicLibrary.Model;
 using Windows.Media.Core;
 using Windows.Media.Playback;
@@ -20,12 +21,15 @@ namespace MusicLibrary
         private List<MenuItem> menuItems;
         private MediaPlayer player;
         private PlaylistManager playlistManager;
+        private ObservableCollection<Playlist> playlists;
+
         public MainPage()
         {
             this.InitializeComponent();
             player = new MediaPlayer();
             songs = new ObservableCollection<Song>();
             playlistManager = new PlaylistManager();
+            playlists = new ObservableCollection<Playlist>(playlistManager.Playlists.Values);
             SongManager.GetAllSongs(songs);
             menuItems = new List<MenuItem>();
 
@@ -94,11 +98,11 @@ namespace MusicLibrary
             BackButton.Visibility = Visibility.Visible;
         }
 
-        private void FavoriteList_Click(object sender, RoutedEventArgs e)
+        private void FavoriteList_Click(object sender, ItemClickEventArgs e)
         {
-            var playlists = playlistManager.Playlists;
+            Playlist playlist = (Playlist)e.ClickedItem;
             songs.Clear();
-            var songsInPlaylist = playlistManager.Playlists["Playlist1"].Songs;
+            var songsInPlaylist = playlistManager.Playlists[playlist.Name].Songs;
             songsInPlaylist.ForEach(s => songs.Add(s));
             CategoryTextBlock.Text = "Play List";
             MenuItemsListView.SelectedItem = null;
@@ -177,10 +181,16 @@ namespace MusicLibrary
             }
         }
 
-        private void AddPlaylist_Click(object sender, RoutedEventArgs e)
+        private void AddToPlaylist_Click(object sender, ItemClickEventArgs e)
         {
-            Song song = ((Button)sender).DataContext as Song;
-            playlistManager.Playlists["Playlist1"].Songs.Add(song);
+            Playlist playlist = (Playlist)e.ClickedItem;
+            var allSongs = new List<Song>(songs);
+            var selectedSongs = allSongs.Where(s => s.SelectedForPlaylist == true).ToList();
+            foreach (var song in selectedSongs)
+            {
+                playlistManager.Playlists[playlist.Name].Songs.Add(song);
+                song.SelectedForPlaylist = false;
+            }
         }
     }
 }
