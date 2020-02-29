@@ -30,25 +30,25 @@
                     <Image x:Name="Image1" Source="ms-appx:///Assets/images.jfif" Height="300" Width="300" Stretch="Fill"  />
                     <Button Content="Click here to Chenge image" Background="PowderBlue" VerticalContentAlignment="Bottom"  Click="image_Click" Height="34" Width="300" HorizontalAlignment="Center" />
 
-                    <!--Display What is playing now with this ?-->
-                    <TextBlock  Name="MyFadingText" Margin="20" Width="890" Height="35" FontSize="20" FontWeight="Bold" Foreground="#FF95DDE4">
+                    <!--Display What is playing now with this ?--><!--
+                    <TextBlock  Name="MyFadingText" Margin="20" Width="550" Height="35" FontSize="20" FontWeight="Bold" Foreground="#FF95DDE4" >
  
 
-                       <!--Animates the text block's opacity.--> 
-                                            <TextBlock.Triggers>
-                                                <EventTrigger RoutedEvent="TextBlock.Loaded">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation
-                                Storyboard.TargetName="MyFadingText" 
-                                Storyboard.TargetProperty="(TextBlock.Opacity)"
-                                From="1.0" To="0.0" Duration="0:0:5" 
-                                AutoReverse="True" RepeatBehavior="Forever" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </EventTrigger>
-                                            </TextBlock.Triggers>
-                                        </TextBlock>
+                       --><!--Animates the text block's opacity.--><!-- 
+                     <TextBlock.Triggers>
+                     <EventTrigger >
+                      <BeginStoryboard>
+                                    <Storyboard>
+                                    <DoubleAnimation
+                                    Storyboard.TargetName="MyFadingText" 
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="0.0" To="1.0" Duration="0:0:5" 
+                                    AutoReverse="True" RepeatBehavior="1x" />
+                                    </Storyboard>
+                      </BeginStoryboard>
+                         </EventTrigger>
+                         </TextBlock.Triggers>
+                         </TextBlock>-->
 
 
 
@@ -57,12 +57,12 @@
                 <!--MediaPlayer starts here-->
                 <MediaPlayerElement x:Name="MyMediaElement1" Margin="100,0,100,0" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" Stretch="Fill"  Visibility="Visible">
                     <MediaPlayerElement.TransportControls>
-                        <MediaTransportControls  IsStopEnabled="True"/>
+                        <MediaTransportControls  IsStopEnabled="True"  />
                     </MediaPlayerElement.TransportControls>
                 </MediaPlayerElement>
                 <!--Med1iaPlayer ends here-->
 
-                <ListView x:Name="AllLocalSongsListView" Height="400" Width="auto"   ItemClick="AllLocalSongsListView_ItemClick" IsItemClickEnabled="True" />
+                <ListView x:Name="AllLocalSongsListView" Height="368" Width="auto"   ItemClick="AllLocalSongsListView_ItemClick" IsItemClickEnabled="True" />
             </StackPanel>
         </Grid>
 

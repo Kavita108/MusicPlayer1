@@ -82,15 +82,15 @@ namespace mediaplayer
             //MyMediaElement1.Source = MediaSource.CreateFromStorageFile(source);
             MyMediaElement1.MediaPlayer.Play();
 
-
-            if (e.ClickedItem is string && !string.IsNullOrWhiteSpace((string)e.ClickedItem))
-            {
-                MyFadingText.Text = $"Now Playing, {e.ClickedItem.ToString()}";
-            }
-            else
-            {
-                MyFadingText.Text = "Now Playing";
-            }
+            ////Fading Text 
+            //if (e.ClickedItem is string && !string.IsNullOrWhiteSpace((string)e.ClickedItem))
+            //{
+            //    MyFadingText.Text = $"Now Playing, {e.ClickedItem.ToString()}";
+            //}
+            //else
+            //{
+            //    MyFadingText.Text = "Now Playing";
+            //}
 
 
         }
