@@ -28,30 +28,27 @@
             <StackPanel   >
                 <StackPanel>
                     <Image x:Name="Image1" Source="ms-appx:///Assets/images.jfif" Height="300" Width="300" Stretch="Fill"  />
-                    <Button Content="Chenge image" Background="PowderBlue" VerticalContentAlignment="Bottom"  Click="image_Click" Height="34" Width="300" HorizontalAlignment="Center" />
+                    <Button Content="Click here to Chenge image" Background="PowderBlue" VerticalContentAlignment="Bottom"  Click="image_Click" Height="34" Width="300" HorizontalAlignment="Center" />
 
-                    <!--Display What is playing now with this ?--><!--
-                    <TextBlock
-  Name="MyFadingText"
-  Margin="20" 
-  Width="890" Height="35" FontSize="20" FontWeight="Bold" Foreground="#FF95DDE4">
-  Now playing ******** 
+                    <!--Display What is playing now with this ?-->
+                    <TextBlock  Name="MyFadingText" Margin="20" Width="890" Height="35" FontSize="20" FontWeight="Bold" Foreground="#FF95DDE4">
+ 
 
-  --><!-- Animates the text block's opacity. --><!--
-                        <TextBlock.Triggers>
-                            <EventTrigger RoutedEvent="TextBlock.Loaded">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-            Storyboard.TargetName="MyFadingText" 
-            Storyboard.TargetProperty="(TextBlock.Opacity)"
-            From="1.0" To="0.0" Duration="0:0:5" 
-            AutoReverse="True" RepeatBehavior="Forever" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </TextBlock.Triggers>
-                    </TextBlock>-->
+                       <!--Animates the text block's opacity.--> 
+                                            <TextBlock.Triggers>
+                                                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                Storyboard.TargetName="MyFadingText" 
+                                Storyboard.TargetProperty="(TextBlock.Opacity)"
+                                From="1.0" To="0.0" Duration="0:0:5" 
+                                AutoReverse="True" RepeatBehavior="Forever" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </TextBlock.Triggers>
+                                        </TextBlock>
 
 
 

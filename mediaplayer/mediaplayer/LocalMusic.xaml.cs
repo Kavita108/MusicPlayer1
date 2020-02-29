@@ -1,21 +1,9 @@
-﻿using mediaplayer.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Media.Core;
-using Windows.Media.Playback;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,14 +15,14 @@ namespace mediaplayer
     /// </summary>
     public sealed partial class LocalMusic : Page
     {
-      
-                          
+
+
         public LocalMusic()
         {
             this.InitializeComponent();
             ShowFilesAsync();
 
-            
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -47,7 +35,7 @@ namespace mediaplayer
             {
                 greeting.Text = "Hi!";
             }
-            base.OnNavigatedTo(e);          
+            base.OnNavigatedTo(e);
         }
 
         private void HyperlinkButton_Click1(object sender, RoutedEventArgs e)
@@ -78,21 +66,33 @@ namespace mediaplayer
         }
 
 
-        // string file.Name needs to find a file that matchs the file.name.
+        // string file.Name will find a file that matchs the file.name.
         private void AllLocalSongsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
             //var source = e.ClickedItem as IStorageFile;
             var filename = e.ClickedItem as string;
-            foreach(Windows.Storage.StorageFile file in files)
+            foreach (Windows.Storage.StorageFile file in files)
             {
-                if(file.Name == filename)
+                if (file.Name == filename)
                 {
                     MyMediaElement1.Source = MediaSource.CreateFromStorageFile(file);
                 }
             }
             //MyMediaElement1.Source = MediaSource.CreateFromStorageFile(source);
             MyMediaElement1.MediaPlayer.Play();
+
+
+            if (e.ClickedItem is string && !string.IsNullOrWhiteSpace((string)e.ClickedItem))
+            {
+                MyFadingText.Text = $"Now Playing, {e.ClickedItem.ToString()}";
+            }
+            else
+            {
+                MyFadingText.Text = "Now Playing";
+            }
+
+
         }
 
         private async void image_Click(object sender, RoutedEventArgs e)
