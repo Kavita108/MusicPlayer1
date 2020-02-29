@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocalMusic.xaml.cs">
+      <DependentUpon>LocalMusic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,7 @@
     <Content Include="Assets\Icons\justin.png" />
     <Content Include="Assets\Icons\sia.png" />
     <Content Include="Assets\Icons\taylor.png" />
+    <Content Include="Assets\images.jfif" />
     <Content Include="Assets\images\Adele\Hello.png" />
     <Content Include="Assets\images\Adele\Someone.png" />
     <Content Include="Assets\images\Justin\What.png" />
@@ -180,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="LocalMusic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
