@@ -26,15 +26,18 @@
 
             <TextBlock Name="CategoryTextBlock1" Text="  Play your local music" FontSize="24" Height="855" VerticalAlignment="Top" Margin="0,0,6,0" RenderTransformOrigin="0.476,0.609"   />
             <StackPanel   >
-                <StackPanel>
-                    <Image x:Name="Image1" Source="ms-appx:///Assets/images.jfif" Height="300" Width="300" Stretch="Fill"  />
-                    <Button Content="Click here to Chenge image" Background="PowderBlue" VerticalContentAlignment="Bottom"  Click="image_Click" Height="34" Width="300" HorizontalAlignment="Center" />
+                <StackPanel Height="auto" Width="auto">
+                    <Image x:Name="Image1" Source="ms-appx:///Assets/images.jfif" Height="168" Width="181" Stretch="Fill"  />
+                    <Button Content="Click here to Chenge image" Background="PowderBlue" VerticalContentAlignment="Bottom"  Click="image_Click" Height="34" Width="178" HorizontalAlignment="Center" />
 
-                    <!--Display What is playing now with this ?--><!--
+                    <!--Display What is playing now with this ?-->
+                    <!--
                     <TextBlock  Name="MyFadingText" Margin="20" Width="550" Height="35" FontSize="20" FontWeight="Bold" Foreground="#FF95DDE4" >
  
 
-                       --><!--Animates the text block's opacity.--><!-- 
+                       -->
+                    <!--Animates the text block's opacity.-->
+                    <!-- 
                      <TextBlock.Triggers>
                      <EventTrigger >
                       <BeginStoryboard>
@@ -62,7 +65,7 @@
                 </MediaPlayerElement>
                 <!--Med1iaPlayer ends here-->
 
-                <ListView x:Name="AllLocalSongsListView" Height="368" Width="auto"   ItemClick="AllLocalSongsListView_ItemClick" IsItemClickEnabled="True" />
+                <ListView x:Name="AllLocalSongsListView" Height="509" Width="1100"   ItemClick="AllLocalSongsListView_ItemClick" IsItemClickEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             </StackPanel>
         </Grid>
 
