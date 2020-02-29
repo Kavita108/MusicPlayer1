@@ -16,17 +16,29 @@
         </Grid.RowDefinitions>
         <RelativePanel>
             <Button Content="&#xE700;"
+                    Width="45"
                     Name="HamburgerButton"
                     FontFamily="Segoe MDL2 Assets"
                     Click="HamburgerButton_Click"
                     RelativePanel.AlignLeftWithPanel="True"
                     />
             <Button Content="&#xE0A6;"
+                    Width="45"
                     Name="BackButton"
                     FontFamily="Segoe MDL2 Assets"
                     Click="BackButton_Click"
                     RelativePanel.RightOf="HamburgerButton"
                     />
+             
+            <!--2nd page access starts here-->
+            <TextBlock x:Name="pageTitle" Text="Main Page" Margin="0,0,50,0" RelativePanel.RightOf="BackButton" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,20,0" Name="PageTitle" Text="Enter your name here then click Go to Local Music ->" RelativePanel.RightOf="pageTitle"/>
+            <TextBox HorizontalAlignment="Center" Width="200" Margin="0,0,20,0" Name="yourName" RelativePanel.RightOf="PageTitle"/>
+            <HyperlinkButton Name="HyperLinkButton" Margin="0,0,20,0" Content="Go to Local Music" 
+                Click="HyperLinkButton_Click" HorizontalAlignment="Center" RelativePanel.RightOf="yourName"/>
+            <!--2nd page access ends here-->
+
+
         </RelativePanel>
         <SplitView Grid.Row="1" Name="MySplitView"
                    DisplayMode="CompactOverlay"

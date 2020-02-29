@@ -28,6 +28,7 @@ namespace mediaplayer
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             sounds = new ObservableCollection<Sound>();
             SoundManager.GetAllSounds(sounds);
             menuItems = new List<MenuItem>();
@@ -88,6 +89,12 @@ namespace mediaplayer
             CategoryTextBlock.Text = "Play List";
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
+        }
+
+        //Switch to Local Music Page(Page2)
+        private void HyperLinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LocalMusic), yourName.Text);
         }
     }
 }
