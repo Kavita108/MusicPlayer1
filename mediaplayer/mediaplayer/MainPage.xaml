@@ -16,12 +16,14 @@
         </Grid.RowDefinitions>
         <RelativePanel>
             <Button Content="&#xE700;"
+                    Width="45"
                     Name="HamburgerButton"
                     FontFamily="Segoe MDL2 Assets"
                     Click="HamburgerButton_Click"
                     RelativePanel.AlignLeftWithPanel="True"
                     />
             <Button Content="&#xE0A6;"
+                    Width="45"
                     Name="BackButton"
                     FontFamily="Segoe MDL2 Assets"
                     Click="BackButton_Click"
