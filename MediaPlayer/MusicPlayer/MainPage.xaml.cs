@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mediaplayer.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,16 +9,13 @@ using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-namespace MusicLibrary
+namespace mediaplayer
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+   
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<Song> songs;
+     
+       private ObservableCollection<Sound> sounds;
         private List<MenuItem> menuItems;
         private MediaPlayer player;
         private PlaylistManager playlistManager;
@@ -33,69 +31,46 @@ namespace MusicLibrary
             SongManager.GetAllSongs(songs);
             menuItems = new List<MenuItem>();
 
-            //Load Pane
+            //Load pane
             menuItems.Add(new MenuItem
             {
                 IconFile = "Assets/Icons/adele.png",
-                Category = SongCategory.Adele
+                Category = SoundCategory.Adele
             });
             menuItems.Add(new MenuItem
             {
                 IconFile = "Assets/Icons/Justin.png",
-                Category = SongCategory.Justin
+                Category = SoundCategory.Justin
             });
             menuItems.Add(new MenuItem
             {
                 IconFile = "Assets/Icons/sia.png",
-                Category = SongCategory.Sia
+                Category = SoundCategory.Sia
             });
             menuItems.Add(new MenuItem
             {
                 IconFile = "Assets/Icons/taylor.png",
-                Category = SongCategory.Taylor
+                Category = SoundCategory.Taylor
             });
-
-        }
-
-        //Start mark rating 
-        private void RatingChanged(RatingControl sender, object args)
-        {
-
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
-
-        }
-
-        private void MenuItemsListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var menuItem = (MenuItem)e.ClickedItem;
-            CategoryTextBlock.Text = menuItem.Category.ToString();
-            SongManager.GetSongsByCategory(songs, menuItem.Category);
-        }
-
-        private void SongGridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var song = (Song)e.ClickedItem;
-            MyMediaElement.Source = new Uri(this.BaseUri, song.AudioFile);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            SongManager.GetAllSongs(songs);
-            CategoryTextBlock.Text = "All Songs";
+            SoundManager.GetAllSounds(sounds);
+            CategoryTextBlock.Text = "All Sounds";
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Collapsed;
         }
 
-        private void PlayList_Click(object sender, RoutedEventArgs e)
+        private void SoundGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SongManager.GetSongsByPlaylist(songs);
-            CategoryTextBlock.Text = "Play List";
-            MenuItemsListView.SelectedItem = null;
-            BackButton.Visibility = Visibility.Visible;
+            var sound = (Sound)e.ClickedItem;
+            MyMediaElement.Source = new Uri(this.BaseUri, sound.AudioFile);
         }
 
         private void FavoriteList_Click(object sender, ItemClickEventArgs e)
@@ -106,79 +81,14 @@ namespace MusicLibrary
             songsInPlaylist.ForEach(s => songs.Add(s));
             CategoryTextBlock.Text = "Play List";
             MenuItemsListView.SelectedItem = null;
+        }
+
+        private void MenuItemsListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var menuItem = (MenuItem)e.ClickedItem;
+            CategoryTextBlock.Text = menuItem.Category.ToString();
+            SoundManager.GetSoundsByCategory(sounds, menuItem.Category);
             BackButton.Visibility = Visibility.Visible;
-        }
-
-        private async void PlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            Song clickedOnSong = ((Button)sender).DataContext as Song;
-            if (clickedOnSong.IsPaused)
-            {
-                clickedOnSong.IsPaused = false;
-            }
-            else
-            {
-                Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
-                Windows.Storage.StorageFile audioFile = await folder.GetFileAsync(clickedOnSong.AudioFile);
-                player.AutoPlay = false;
-                player.Source = MediaSource.CreateFromStorageFile(audioFile);
-            }
-
-            var buttons = ((StackPanel)((AppBarButton)sender).Parent).Children;
-            foreach(var button in buttons)
-            {
-                if (((AppBarButton)button).Name == "Play")
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Visible;
-                }
-            }
-
-            clickedOnSong.IsPlaying = true;
-            player.Play();
-        }
-
-        private void PauseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Song clickedOnSong = ((Button)sender).DataContext as Song;
-            clickedOnSong.IsPaused = true;
-
-            var buttons = ((StackPanel)((AppBarButton)sender).Parent).Children;
-            foreach (var button in buttons)
-            {
-                if (((AppBarButton)button).Name == "Pause")
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Visible;
-                }
-            }
-
-            player.Pause();
-        }
-
-        private void StopButton_Click(object sender, RoutedEventArgs e)
-        {
-            Song clickedOnSong = ((Button)sender).DataContext as Song;
-            player.Source = null;
-
-            var buttons = ((StackPanel)((AppBarButton)sender).Parent).Children;
-            foreach (var button in buttons)
-            {
-                if (((AppBarButton)button).Name == "Play")
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    ((AppBarButton)button).Visibility = Visibility.Collapsed;
-                }
-            }
         }
 
         private void AddToPlaylist_Click(object sender, ItemClickEventArgs e)
@@ -192,6 +102,13 @@ namespace MusicLibrary
                 song.SelectedForPlaylist = false;
             }
         }
+
+        private void PlayList_Click(object sender, RoutedEventArgs e)
+        {
+            SoundManager.GetSoundsByPlaylist(sounds);
+            CategoryTextBlock.Text = "Play List";
+            MenuItemsListView.SelectedItem = null;
+            BackButton.Visibility = Visibility.Visible;
+        }
     }
 }
-

@@ -73,7 +73,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <MediaElement Name="MyMediaElement" AutoPlay="False"  />
+                    <MediaElement Name="MyMediaElement" AutoPlay="False"/>
                     <TextBlock Name="CategoryTextBlock" Text="My Music" FontSize="24" />
                     <Button Content="Add To Playlist" HorizontalAlignment="Right">
                         <Button.Flyout>

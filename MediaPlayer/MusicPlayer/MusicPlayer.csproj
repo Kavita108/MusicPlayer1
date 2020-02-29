@@ -123,10 +123,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\MenuItem.cs" />
-    <Compile Include="Model\Playlist.cs" />
-    <Compile Include="Model\PlaylistManager.cs" />
-    <Compile Include="Model\Song.cs" />
-    <Compile Include="Model\SongManager.cs" />
+    <Compile Include="Model\Sound.cs" />
+    <Compile Include="Model\SoundManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
