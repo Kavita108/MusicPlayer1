@@ -28,6 +28,9 @@ namespace MusicLibrary
         private MediaPlayer player;
         private PlaylistManager playlistManager;
         private ObservableCollection<Playlist> playlists;
+        private AppBarButton currentPlayControl;
+        private AppBarButton currentPauseControl;
+        private AppBarButton currentStopControl;
 
         public MainPage()
         {
@@ -127,6 +130,21 @@ namespace MusicLibrary
                 Windows.Storage.StorageFile audioFile = await folder.GetFileAsync(clickedOnSong.AudioFile);
                 player.AutoPlay = false;
                 player.Source = MediaSource.CreateFromStorageFile(audioFile);
+                
+                if (currentPlayControl != null)
+                {
+                    currentPlayControl.Visibility = Visibility.Visible;
+                }
+
+                if (currentPauseControl != null)
+                {
+                    currentPauseControl.Visibility = Visibility.Collapsed;
+                }
+
+                if (currentStopControl != null)
+                {
+                    currentStopControl.Visibility = Visibility.Collapsed;
+                }
             }
 
             var buttons = ((StackPanel)((AppBarButton)sender).Parent).Children;
@@ -135,10 +153,19 @@ namespace MusicLibrary
                 if (((AppBarButton)button).Name == "Play")
                 {
                     ((AppBarButton)button).Visibility = Visibility.Collapsed;
+                    this.currentPlayControl = (AppBarButton)button;
                 }
                 else
                 {
                     ((AppBarButton)button).Visibility = Visibility.Visible;
+                    if (((AppBarButton)button).Name == "Pause")
+                    {
+                        this.currentPauseControl = (AppBarButton)button;
+                    }
+                    else
+                    {
+                        this.currentStopControl = (AppBarButton)button;
+                    }
                 }
             }
 
