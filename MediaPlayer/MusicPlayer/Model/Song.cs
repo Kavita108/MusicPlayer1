@@ -1,4 +1,6 @@
-﻿namespace MusicLibrary.Model
+﻿using Windows.Storage;
+
+namespace MusicLibrary.Model
 {
     public enum SongCategory
     {
@@ -19,14 +21,44 @@
 
         public bool IsPaused { get; set; }
 
-        public Song(string name, SongCategory category)
+        public bool _playList { get; set; }
+        public int _rating { get; set; }
+
+        public int rating
+        {
+            get { return _rating; }
+            set
             {
-                Name = name;
-                Category = category;
-                AudioFile = $"Audio\\{category}\\{name}.wav";
-                ImageFile = $"/Assets/Images/{category}/{name}.png";
+                _rating = value;
+
+                ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                localSettings.Values[Name + "rating"] = _rating;
             }
         }
-    
+
+        public bool playList
+        {
+            get { return _playList; }
+            set
+            {
+                _playList = value;
+
+                ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                localSettings.Values[Name + "playlist"] = _playList;
+            }
+        }
+
+        public Song(string name, SongCategory category)
+        {
+            Name = name;
+            Category = category;
+            AudioFile = $"Audio\\{category}\\{name}.wav";
+            ImageFile = $"/Assets/Images/{category}/{name}.png";
+
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            playList = (bool)(localSettings.Values[Name + "playlist"] ?? false);
+            rating = (int)(localSettings.Values[Name + "rating"] ?? -1);
+        }
+    }
 }
 

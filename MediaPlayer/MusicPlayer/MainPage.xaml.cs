@@ -63,12 +63,6 @@ namespace MusicLibrary
 
         }
 
-        //Start mark rating 
-        private void RatingChanged(RatingControl sender, object args)
-        {
-
-        }
-
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
