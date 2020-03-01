@@ -5,6 +5,7 @@ using System.Linq;
 using MusicLibrary.Model;
 using Windows.Media.Core;
 using Windows.Media.Playback;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -96,14 +97,6 @@ namespace MusicLibrary
             BackButton.Visibility = Visibility.Collapsed;
         }
 
-        private void PlayList_Click(object sender, RoutedEventArgs e)
-        {
-            SongManager.GetSongsByPlaylist(songs);
-            CategoryTextBlock.Text = "Play List";
-            MenuItemsListView.SelectedItem = null;
-            BackButton.Visibility = Visibility.Visible;
-        }
-
         //Switch to Local Music Page(Page2)
         private void HyperLinkButton_Click(object sender, RoutedEventArgs e)
         {
@@ -114,8 +107,7 @@ namespace MusicLibrary
         {
             Playlist playlist = (Playlist)e.ClickedItem;
             songs.Clear();
-            var songsInPlaylist = playlistManager.Playlists[playlist.Name].Songs;
-            songsInPlaylist.ForEach(s => songs.Add(s));
+            SongManager.GetSongsByPlaylist(playlist.Name, songs);
             CategoryTextBlock.Text = "Play List";
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
@@ -197,10 +189,15 @@ namespace MusicLibrary
         {
             Playlist playlist = (Playlist)e.ClickedItem;
             var allSongs = new List<Song>(songs);
-            var selectedSongs = allSongs.Where(s => s.SelectedForPlaylist == true).ToList();
-            foreach (var song in selectedSongs)
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            foreach (var song in allSongs)
             {
-                playlistManager.Playlists[playlist.Name].Songs.Add(song);
+                if (song.SelectedForPlaylist)
+                {
+                    localSettings.Values[playlist.Name + song.Name] = song.SelectedForPlaylist;
+                }
+
                 song.SelectedForPlaylist = false;
             }
         }

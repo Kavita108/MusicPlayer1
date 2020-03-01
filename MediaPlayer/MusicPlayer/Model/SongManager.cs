@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.Storage;
 
 namespace MusicLibrary.Model
 {
@@ -26,7 +27,6 @@ namespace MusicLibrary.Model
 
         public static void GetAllSongs(ObservableCollection<Song> songs)
         {
-
             var allSongs = getSongs();
             songs.Clear();
             allSongs.ForEach(s => songs.Add(s));
@@ -40,10 +40,11 @@ namespace MusicLibrary.Model
             filteredSongs.ForEach(s => songs.Add(s));
         }
 
-        public static void GetSongsByPlaylist(ObservableCollection<Song> songs)
+        public static void GetSongsByPlaylist(string playList, ObservableCollection<Song> songs)
         {
             var allSongs = getSongs();
-            var filteredSongs = allSongs.Where(s => s.SelectedForPlaylist == true).ToList();
+            ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            var filteredSongs = allSongs.Where(s => (bool)(localSettings.Values[playList + s.Name] ?? false)).ToList();
             songs.Clear();
             filteredSongs.ForEach(s => songs.Add(s));
         }

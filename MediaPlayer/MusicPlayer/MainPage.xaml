@@ -22,6 +22,7 @@
                     Click="HamburgerButton_Click"
                     RelativePanel.AlignLeftWithPanel="True"/>
             <Button Content ="&#xE0A6;"
+                    Width="45"
                     Name ="BackButton"
                     FontFamily="Segoe MDL2 Assets"
                     Click="BackButton_Click"
@@ -111,7 +112,7 @@
                                               IsChecked="{x:Bind SelectedForPlaylist,Mode=TwoWay}"/>
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
                                     <TextBlock x:Name="AudioFileName" FontSize="20" HorizontalAlignment="Center" Text="{x:Bind Name}" />
-                                    <RatingControl x:Name="MyRating" ValueChanged="RatingChanged"/>
+                                    <RatingControl x:Name="MyRating" InitialSetValue="0" Value="{x:Bind rating,Mode=TwoWay}"/>
                                     <StackPanel Orientation="Horizontal" Margin="5">
                                         <AppBarButton Name="Play" Icon="Play" Click="PlayButton_Click"/>
                                         <AppBarButton Name="Pause" Icon="Pause" Visibility="Collapsed" Click="PauseButton_Click"/>
