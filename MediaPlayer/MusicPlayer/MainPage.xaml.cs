@@ -81,6 +81,7 @@ namespace MusicLibrary
             var menuItem = (MenuItem)e.ClickedItem;
             CategoryTextBlock.Text = menuItem.Category.ToString();
             SongManager.GetSongsByCategory(songs, menuItem.Category);
+            BackButton.Visibility = Visibility.Visible;
         }
 
         private void SongGridView_ItemClick(object sender, ItemClickEventArgs e)
