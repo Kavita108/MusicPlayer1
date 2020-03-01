@@ -7,6 +7,11 @@ using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,6 +31,7 @@ namespace MusicLibrary
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             player = new MediaPlayer();
             songs = new ObservableCollection<Song>();
             playlistManager = new PlaylistManager();
@@ -96,6 +102,12 @@ namespace MusicLibrary
             CategoryTextBlock.Text = "Play List";
             MenuItemsListView.SelectedItem = null;
             BackButton.Visibility = Visibility.Visible;
+        }
+
+        //Switch to Local Music Page(Page2)
+        private void HyperLinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LocalMusic), yourName.Text);
         }
 
         private void FavoriteList_Click(object sender, ItemClickEventArgs e)
