@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{F10AA0CF-0248-44FA-9331-F7440F29D2DC}</ProjectGuid>
+    <ProjectGuid>{39EEF55D-7F82-4BCD-A039-B21D7FEF8FC0}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mediaplayer</RootNamespace>
-    <AssemblyName>mediaplayer</AssemblyName>
+    <RootNamespace>MusicLibrary</RootNamespace>
+    <AssemblyName>MusicLibrary</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -126,8 +126,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\MenuItem.cs" />
-    <Compile Include="Model\Sound.cs" />
-    <Compile Include="Model\SoundManager.cs" />
+    <Compile Include="Model\Playlist.cs" />
+    <Compile Include="Model\PlaylistManager.cs" />
+    <Compile Include="Model\Song.cs" />
+    <Compile Include="Model\SongManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +159,7 @@
     <Content Include="Assets\images\Sia\Cheap.png" />
     <Content Include="Assets\images\Taylor\Look.png" />
     <Content Include="Assets\images\Taylor\Shake.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\PackageAppXManifest\1240x1240.png" />
     <Content Include="Assets\PackageAppXManifest\1240x600.png" />
     <Content Include="Assets\PackageAppXManifest\24x24-large.png" />
@@ -201,6 +204,7 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -218,7 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

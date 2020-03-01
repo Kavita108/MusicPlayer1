@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="2c1def19-d436-43df-a589-231405fbfaf7"
-    Publisher="CN=shaim"
+    Name="b8276a00-0f80-4ee5-8273-774317379f5c"
+    Publisher="CN=Ishani"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2c1def19-d436-43df-a589-231405fbfaf7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b8276a00-0f80-4ee5-8273-774317379f5c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>mediaplayer</DisplayName>
-    <PublisherDisplayName>shaim</PublisherDisplayName>
+    <DisplayName>MusicLibrary</DisplayName>
+    <PublisherDisplayName>Ishani</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="mediaplayer.App">
+      EntryPoint="MusicLibrary.App">
       <uap:VisualElements
-        DisplayName="mediaplayer"
+        DisplayName="MusicLibrary"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="mediaplayer"
+        Description="MusicLibrary"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
