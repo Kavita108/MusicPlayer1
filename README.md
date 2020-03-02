@@ -1,5 +1,7 @@
 # :musical_note: MusicPlayer :musical_note:
 
+[Assignment Video](https://youtu.be/a0hy0eMAGUo)
+
 ![Music Player image]( final image will come here)
 ## Index
 
